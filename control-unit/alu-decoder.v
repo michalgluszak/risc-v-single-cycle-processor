@@ -12,13 +12,13 @@ module alu_decoder(
 	assign in = {ALUOp, funct3, op, funct7};
 
 	always @(*) begin 
-		case(in)
-			7'b00xxxxx:
+		casez(in)
+			7'b00?????:
 			begin 
 				ALUControl = 3'b000; //add (lw, sw)
 			end		
 			
-			7'b01xxxxx:
+			7'b01?????:
 			begin 
 				ALUControl = 3'b001; //substract (beq)
 			end
@@ -28,7 +28,7 @@ module alu_decoder(
 				ALUControl = 3'b000; //add (add)
 			end
 
-			7'b100000x:
+			7'b100000?:
 			begin 
 				ALUControl = 3'b000; //add (addi)
 			end
@@ -38,22 +38,22 @@ module alu_decoder(
 				ALUControl = 3'b001; //substract (sub)
 			end
 
-			7'b10010xx:
+			7'b10010??:
 			begin 
 				ALUControl = 3'b101; //set less than (slt)
 			end
 
-			7'b10110xx:
+			7'b10110??:
 			begin 
 				ALUControl = 3'b011; //or (or)
 			end
 
-			7'b10111xx:
+			7'b10111??:
 			begin 
 				ALUControl = 3'b010; //and (and)
 			end
 			
-			default: ALUControl = 3'bxxx;	
+			default: ALUControl = 3'b???;	
 		endcase
 	end
 

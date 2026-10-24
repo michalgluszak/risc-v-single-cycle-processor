@@ -12,7 +12,7 @@ module main_decoder(
 	);
 
 	always @ (*) begin 
-		case(op)
+		casez(op)
 			7'b0000011:
 			begin 
 				RegWrite = 1'b1;
@@ -30,7 +30,7 @@ module main_decoder(
 				ImmSrc = 2'b01;
 				ALUSrc = 1'b1;
 				MemWrite = 1'b1;
-				ResultSrc = 1'bx;
+				ResultSrc = 1'b?;
 				Branch = 1'b0;
 				ALUOp = 2'b00;
 			end
@@ -38,7 +38,7 @@ module main_decoder(
 			7'b0110011:
 			begin 
 				RegWrite = 1'b1;
-				ImmSrc = 2'bxx;
+				ImmSrc = 2'b??;
 				ALUSrc = 1'b0;
 				MemWrite = 1'b0;
 				ResultSrc = 1'b0;
@@ -52,20 +52,20 @@ module main_decoder(
 				ImmSrc = 2'b10;
 				ALUSrc = 1'b0;
 				MemWrite = 1'b0;
-				ResultSrc = 1'bx;
+				ResultSrc = 1'b?;
 				Branch = 1'b1;
 				ALUOp = 2'b01;
 			end
 
 			default:
 			begin
-				RegWrite = 1'bx;
-				ImmSrc = 2'bxx;
-				ALUSrc = 1'bx;
-				MemWrite = 1'bx;
-				ResultSrc = 1'bx;
-				Branch = 1'bx;
-				ALUOp = 2'bxx;
+				RegWrite = 1'b?;
+				ImmSrc = 2'b??;
+				ALUSrc = 1'b?;
+				MemWrite = 1'b?;
+				ResultSrc = 1'b?;
+				Branch = 1'b?;
+				ALUOp = 2'b??;
 			end
 				
 		endcase
