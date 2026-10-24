@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module main_decoder(
-	input [6:0] Op,
+	input [6:0] op,
 	output reg RegWrite,
 	output reg [1:0] ImmSrc,
 	output reg ALUSrc,
@@ -12,7 +12,7 @@ module main_decoder(
 	);
 
 	always @ (*) begin 
-		case(Op)
+		case(op)
 			7'b0000011:
 			begin 
 				RegWrite = 1'b1;
