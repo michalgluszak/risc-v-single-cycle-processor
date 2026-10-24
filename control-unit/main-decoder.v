@@ -37,7 +37,7 @@ module main_decoder(
 			
 			7'b0110011:
 			begin 
-				RegWrite = 1'b0;
+				RegWrite = 1'b1;
 				ImmSrc = 2'bxx;
 				ALUSrc = 1'b0;
 				MemWrite = 1'b0;
