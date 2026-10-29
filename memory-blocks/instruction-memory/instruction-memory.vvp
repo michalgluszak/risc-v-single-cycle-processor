@@ -1,0 +1,54 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x63961be6b240 .scope module, "instruction_memory_tb" "instruction_memory_tb" 2 3;
+ .timescale -9 -12;
+v0x63961be7ccc0_0 .var "a", 31 0;
+v0x63961be7cd80_0 .net "rd", 31 0, L_0x63961be7d090;  1 drivers
+S_0x63961be6b3d0 .scope module, "uut" "imem" 2 7, 3 3 0, S_0x63961be6b240;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 32 "a";
+    .port_info 1 /OUTPUT 32 "rd";
+L_0x63961be7d090 .functor BUFZ 32, L_0x63961be7ce50, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x63961be58f90 .array "RAM", 63 0, 31 0;
+v0x63961be59030_0 .net *"_ivl_0", 31 0, L_0x63961be7ce50;  1 drivers
+v0x63961be7c990_0 .net *"_ivl_3", 29 0, L_0x63961be7cf50;  1 drivers
+v0x63961be7ca50_0 .net "a", 31 0, v0x63961be7ccc0_0;  1 drivers
+v0x63961be7cb30_0 .net "rd", 31 0, L_0x63961be7d090;  alias, 1 drivers
+L_0x63961be7ce50 .array/port v0x63961be58f90, L_0x63961be7cf50;
+L_0x63961be7cf50 .part v0x63961be7ccc0_0, 2, 30;
+    .scope S_0x63961be6b3d0;
+T_0 ;
+    %vpi_call 3 11 "$readmemb", "test.txt", v0x63961be58f90 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x63961be6b240;
+T_1 ;
+    %vpi_call 2 12 "$monitor", "a = %0d rd = %0h", v0x63961be7ccc0_0, v0x63961be7cd80_0 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x63961be7ccc0_0, 0, 32;
+    %delay 10000, 0;
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x63961be7ccc0_0, 0, 32;
+    %delay 10000, 0;
+    %pushi/vec4 8, 0, 32;
+    %store/vec4 v0x63961be7ccc0_0, 0, 32;
+    %delay 10000, 0;
+    %pushi/vec4 12, 0, 32;
+    %store/vec4 v0x63961be7ccc0_0, 0, 32;
+    %delay 10000, 0;
+    %vpi_call 2 21 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "instruction-memory-tb.v";
+    "instruction-memory.v";
