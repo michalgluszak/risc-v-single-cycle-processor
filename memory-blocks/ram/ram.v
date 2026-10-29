@@ -12,9 +12,9 @@ reg [M-1:0] RAM [2**N-1:0];
 
 always @(posedge clk) begin 
 	if(we) begin 
-		RAM[adr] = din;
+		RAM[adr] <= din;
 	end else begin 
-		dout = RAM[adr];
+		dout <= RAM[adr];
 	end
 end
 
